@@ -22,7 +22,7 @@ export default function Home() {
         <div className="md:col-span-1 xl:col-span-2 min-h-[200px]">
           <TradingViewWidgetTopStories 
             title="Market stories"
-            scriptUrl="https://s3.tradingview.com/external-embedding/embed-widget-top-stories.js"
+            scriptUrl="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
           />
         </div>
         <div className="md:col-span-1 xl:col-span-2 min-h-[200px]">

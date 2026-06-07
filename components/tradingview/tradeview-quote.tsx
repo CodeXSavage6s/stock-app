@@ -10,23 +10,29 @@ interface TradingViewWidgetQuotesProps {
 function TradingViewWidgetQuotes({ title, scriptUrl }: TradingViewWidgetQuotesProps) {
   const container = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = scriptUrl ?? "https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js";
-    script.type = "text/javascript";
-    script.async = true;
-    script.innerHTML = `
-      {
-        "displayMode": "regular",
-        "feedMode": "all_symbols",
-        "colorTheme": "dark",
-        "isTransparent": false,
-        "locale": "en",
-        "width": "100%",
-        "height": 550
-      }`;
-    container.current?.appendChild(script);
-  }, []);
+     useEffect(() => {
+     const script = document.createElement("script");
+     script.src = scriptUrl ?? "https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js";
+     script.type = "text/javascript";
+     script.async = true;
+     script.innerHTML = `
+       {
+         "displayMode": "regular",
+         "feedMode": "all_symbols",
+         "colorTheme": "dark",
+         "isTransparent": false,
+         "locale": "en",
+         "width": "100%",
+         "height": 550
+       }`;
+     container.current?.appendChild(script);
+
+    return () => {
+      if (container.current) {
+        container.current.innerHTML = '';
+      }
+    };
+  }, [scriptUrl]);
 
   return (
     <div className="tradingview-widget-container" ref={container}>
