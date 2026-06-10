@@ -8,9 +8,9 @@ import FooterLink from "@/components/forms/FooterLink";
 import {CountrySelectField} from '@/components/forms/CountrySelectField'
 import {INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS} from "@/lib/constants";
 
-export default function signUp() {
+export default function SignUp() {
   
-  const { register, handleSubmit, control, formState: { errors, isSubmiting } } = useForm<SignUpFormData>({
+  const { register, handleSubmit, control, formState: { errors, isSubmitting } } = useForm<SignUpFormData>({
     defaultValues: {
       fullName: '',
       email: '',
@@ -18,7 +18,7 @@ export default function signUp() {
       country: 'US',
       investmentGoals: 'Growth',
       riskTolerance: 'Medium',
-      preferedIndustry: 'Technology'
+      prefferedIndustry: 'Technology'
     },
     mode: 'onBlur'
   });
@@ -51,7 +51,7 @@ export default function signUp() {
                     placeholder="contact@jsmastery.com"
                     register={register}
                     error={errors.email}
-                    validation={{ required: 'Email name is required', pattern: /^\w+@\w+\.\w+$/, message: 'Email address is required' }}
+                    validation={{ required: 'Email name is required', value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Email address is required' }}
                 />
 
                 <InputField
@@ -61,7 +61,7 @@ export default function signUp() {
                     type="password"
                     register={register}
                     error={errors.password}
-                    validation={{ required: 'Password is required', minLength: 8 }}
+                    validation={{ required: 'Password is required', minLength: { value: 8, message: 'Password must be at least 8 characters' }}}
                 />
             
           <CountrySelectField 
@@ -93,17 +93,17 @@ export default function signUp() {
                 />
                 
           <SelectField
-                    name="preferedIndustry"
+                    name="prefferedIndustry"
                     label="Preferred Industry"
                     placeholder="Select your preferred industry"
                     options={PREFERRED_INDUSTRIES}
                     control={control}
-                    error={errors.preferedIndustry}
+                    error={errors.prefferedIndustry}
                     required
                 />
         
-        <Button type="submit" disabled={isSubmiting} className="yellow-btn w-full mt-5">
-          {isSubmiting ? "Creating Account..." : "Start Invesment Journey"}
+        <Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
+          {isSubmitting ? "Creating Account..." : "Start Investment Journey"}
         </Button>
         <FooterLink text="Already have an account?" linkText="Sign in" href="/sign-in" />
       </form>
