@@ -6,7 +6,7 @@ import InputField from '@/components/forms/InputField';
 import FooterLink from '@/components/forms/FooterLink'
 import { useRouter } from 'next/navigation'
 
-export default function signIn() {
+export default function SignIn() {
     const router = useRouter()
     const {
         register,

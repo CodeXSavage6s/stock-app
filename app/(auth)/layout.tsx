@@ -12,7 +12,7 @@ export default function Layout({
         <section className="auth-left-section">
           <div className="my-2">
             <Link href="/">
-              <Image src="icons/logo.svg" alt="logo" width={145} height={45} />
+              <Image src="/icons/logo.svg" alt="logo" width={145} height={45} />
             </Link>
           </div>
           <div>
