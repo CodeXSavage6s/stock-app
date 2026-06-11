@@ -5,7 +5,7 @@ import Image from 'next/image'
 import NavItems from '@/components/NavItems'
 import UserDropdown from '@/components/userdropdown'
 
-export default function Header() {
+export default function Header({user}: {user: User}) {
   return (
     <header className="sticky top-0 justify-between flex items-center header px-3">
       <div className="container header-wrapper">
