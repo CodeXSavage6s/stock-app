@@ -15,7 +15,7 @@ export default function Header({user}: {user: User}) {
         <nav className="hidden sm:block">
           <NavItems />
         </nav>
-        <UserDropdown />
+        <UserDropdown user={user}/>
       </div>
     </header>
     )

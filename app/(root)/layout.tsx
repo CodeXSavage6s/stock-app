@@ -20,7 +20,7 @@ export default async function Layout({
     
   return (
     <div>
-   <Header />   
+   <Header user={user}/>   
     <main className="min-h-screen text-gray-400">
       <div className="container py-10">
         {children}
