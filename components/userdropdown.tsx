@@ -20,16 +20,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const UserDropdown = () => {
+const UserDropdown = ({user}: {user: User}) => {
   const router = useRouter()
   
   const handleSignout = async () => {
     router.push("/sign-in")
   }
   
-  const user = {
-    name: "savage", email: "savage@gmail.com"
-  }
+  //const user = {
+  //  name: "savage", email: "savage@gmail.com"
+  //}
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
