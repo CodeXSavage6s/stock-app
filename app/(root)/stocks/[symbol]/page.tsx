@@ -1,5 +1,9 @@
 import TradingViewWidget from "@/components/TradingViewWidget";
 import WatchlistButton from "@/components/WatchlistButton";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { getWatchlistSymbolsByEmail } from "@/lib/actions/user.actions";
+
 import {
   SYMBOL_INFO_WIDGET_CONFIG,
   CANDLE_CHART_WIDGET_CONFIG,
@@ -9,7 +13,16 @@ import {
   COMPANY_FINANCIALS_WIDGET_CONFIG,
 } from "@/lib/constants";
 
+interface StockDetailsPageProps { params: { symbol: string } }
+
+// Placeholder for fetching company name
+async function getCompanyName(symbol: string): Promise<string> {
+  // In a real application, this would fetch the actual company name
+  return `${symbol.toUpperCase()} Inc.`;
+}
+
 export default async function StockDetails({ params }: StockDetailsPageProps) {
+
   const { symbol } = await params;
   const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
 
