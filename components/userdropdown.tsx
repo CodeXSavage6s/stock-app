@@ -19,11 +19,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {signOut} from "@/lib/actions/auth.actions";
+import {LogOut} from "lucide-react";
 
 const UserDropdown = ({user}: {user: User}) => {
   const router = useRouter()
   
   const handleSignout = async () => {
+    await signOut()
     router.push("/sign-in")
   }
   
@@ -58,9 +61,9 @@ const UserDropdown = ({user}: {user: User}) => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-gray-600"/>
       <DropdownMenuItem onClick={handleSignout} className="text-gray-400 text-md font-medium focus:bg-transparent focus:text-yellow-500 transition-colors cursor-pointer">
-        {/*
+        
         <LogOut className="h-4 w-4 hidden sm:block" />
-        */}
+        
         logout
       </DropdownMenuItem>
         <DropdownMenuSeparator className="hidden sm:block bg-gray-600"/>

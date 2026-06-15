@@ -12,6 +12,7 @@ function TradingViewWidget({ title, scriptUrl }: TradingViewWidgetProps) {
   const container = useRef(null);
 
   useEffect(
+  useEffect(
     () => {
       const script = document.createElement("script");
       script.src = scriptUrl ?? "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
