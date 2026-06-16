@@ -9,7 +9,6 @@ interface WatchlistButtonProps {
   isInWatchlist: boolean;
   showTrashIcon?: boolean;
   type?: "button" | "icon";
-  userId?: string;
   onWatchlistChange?: (symbol: string, added: boolean) => void;
 }
 
@@ -19,7 +18,6 @@ const WatchlistButton = ({
   isInWatchlist,
   showTrashIcon,
   type = "button",
-  userId,
   onWatchlistChange,
 }: WatchlistButtonProps) => {
   const [added, setAdded] = useState<boolean>(!!isInWatchlist);
@@ -31,17 +29,19 @@ const WatchlistButton = ({
   }, [added, type]);
 
   const handleClick = async () => {
-    alert("clicked");
-    console.log('clicked')
-    if (!userId) return;
+    try {
+      setIsPending(true);
+      const result = await addToWatchlist(symbol, company);
 
-    setIsPending(true);
-    const next = await addToWatchlist(symbol, userId, company);
-    console.log("res", next);
-    alert("res", next);
-    setAdded(next);
-    onWatchlistChange?.(symbol, next);
-    setIsPending(false);
+      if (result.ok && result.inWatchlist !== null) {
+        setAdded(result.inWatchlist);
+        onWatchlistChange?.(symbol, result.inWatchlist);
+      }
+    } catch (error) {
+      console.error('Failed to update watchlist:', error);
+    } finally {
+      setIsPending(false);
+    }
   };
 
   if (type === "icon") {
