@@ -194,3 +194,20 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
   }
 });
 
+export async function getQuote(symbol: string): Promise<{ price: number; change: number; changePercent: number } | null> {
+  try {
+    const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
+    if (!token) throw new Error('FINNHUB API key is not configured');
+
+    const url = `${FINNHUB_BASE_URL}/quote?symbol=${encodeURIComponent(symbol)}&token=${token}`;
+    const data = await fetchJSON<{ c: number; d: number; dp: number }>(url, 60); // revalidate every 60s
+    return {
+      price: data.c,
+      change: data.d,
+      changePercent: data.dp,
+    };
+  } catch (err) {
+    console.error('getQuote error:', err);
+    return null;
+  }
+}
