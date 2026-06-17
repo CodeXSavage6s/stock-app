@@ -1,10 +1,10 @@
 'use server';
 
-import {connectToDatabase} from "@/database/mongoose";
+import connectDB from "@/database/mongodb";
 
 export const getAllUsersForNewsEmail = async () => {
     try {
-        const mongoose = await connectToDatabase();
+        const mongoose = await connectDB();
         const db = mongoose.connection.db;
         if(!db) throw new Error('Mongoose connection not connected');
 
