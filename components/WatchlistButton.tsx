@@ -33,6 +33,7 @@ const WatchlistButton = ({
       setIsPending(true);
       const result = await addToWatchlist(symbol, company);
 
+<<<<<<< HEAD
       if (result.ok && result.inWatchlist !== null) {
         setAdded(result.inWatchlist);
         onWatchlistChange?.(symbol, result.inWatchlist);
@@ -40,6 +41,17 @@ const WatchlistButton = ({
     } catch (error) {
       console.error('Failed to update watchlist:', error);
     } finally {
+=======
+    setIsPending(true);
+    try {
+      const next = await addToWatchlist(symbol, userId, company);
+      setAdded(next);
+      onWatchlistChange?.(symbol, next);
+    } catch (err) {
+      console.error("Error adding to watchlist", err)
+    }
+      finally {
+>>>>>>> d09b210 (setup watchlist page)
       setIsPending(false);
     }
   };
