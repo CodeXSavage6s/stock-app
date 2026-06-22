@@ -12,8 +12,12 @@ export default async function Layout({
   children: React.ReactNode;
 }>) {
   
-  const session = await auth?.api?.getSession({ headers: await headers() })
+  const authInstance = await auth;
 
+  const session = await authInstance.api.getSession({
+    headers: await headers()
+  });
+  
   if(session?.user) redirect('/')
     
   return (
