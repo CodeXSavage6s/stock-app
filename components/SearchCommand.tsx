@@ -12,7 +12,7 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   const [open, setOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [loading, setLoading] = useState(false)
-  const [stocks, setStocks] = useState<StockWithWatchlistStatus[]>(null);
+  const [stocks, setStocks] = useState<StockWithWatchlistStatus[]>([]);
 
   const isSearchMode = !!searchTerm.trim();
   const displayStocks = isSearchMode ? stocks : stocks?.slice(0, 10);
@@ -29,7 +29,7 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   }, [])
 
   const handleSearch = async () => {
-    if(!isSearchMode) return setStocks(null);
+    if(!isSearchMode) return setStocks([]);
 
     setLoading(true)
     try {
@@ -51,7 +51,7 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   const handleSelectStock = () => {
     setOpen(false);
     setSearchTerm("");
-    setStocks(null);
+    setStocks([]);
   }
 
   return (
