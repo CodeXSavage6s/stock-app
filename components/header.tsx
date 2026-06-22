@@ -17,7 +17,7 @@ export default async function Header({user}: {user: User}) {
         <nav className="hidden sm:block">
           <NavItems initialStocks={initialStocks} />
         </nav>
-        <UserDropdown user={user} initialStocks={initialStocks}/>
+        <UserDropdown user={user} />
       </div>
     </header>
     )
