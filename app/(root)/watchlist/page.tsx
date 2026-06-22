@@ -29,7 +29,7 @@ export default async function WatchlistPage() {
           <WatchlistTable userId={userId} items={itemsWithQuotes} />
         </div>
         <div className="flex flex-col gap-6">
-          <WatchlistNews userId={userId} symbols={items.map((i) => i.symbol)} />
+          <WatchlistNews userId={userId} />
         </div>
       </section>
     </div>
