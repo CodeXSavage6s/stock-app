@@ -31,4 +31,7 @@ export const getAuth = async () => {
     return authInstance;
 }
 
-export const auth = await getAuth();
+// Export a function or helper instead of a top-level awaited constant
+export const auth = async () => {
+    return await getAuth();
+};
