@@ -20,13 +20,8 @@ export default async function StockDetails({ params }: StockDetailsPageProps) {
 
   const session = await auth.api.getSession({ headers: await headers() });
   const userId = session?.user?.id
-<<<<<<< HEAD
 
   const isInWatchlist = await checkIsInWatchlist(symbol, userId)
-=======
-  
-  const isInWatchlist = await checkIsInWatchlist(symbol.toUpperCase(), userId)
->>>>>>> d09b210 (setup watchlist page)
 
   return (
     <div className="flex min-h-screen p-4 md:p-6 lg:p-8">
@@ -57,7 +52,7 @@ export default async function StockDetails({ params }: StockDetailsPageProps) {
         {/* Right column */}
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-between">
-            <WatchlistButton symbol={symbol} company={symbol} showTrashIcon={isInWatchlist} isInWatchlist={isInWatchlist} />
+            <WatchlistButton symbol={symbol} company={symbol} showTrashIcon={isInWatchlist} userId={userId} isInWatchlist={isInWatchlist} />
           </div>
 
           <TradingViewWidget

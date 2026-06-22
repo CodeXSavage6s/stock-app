@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-export default function WatchListPage() {
-  return (
-    <div className="flex items-center justify-center min-h-[400px]">
-      <div className="text-center">
-        <h2 className="text-2xl font-semibold text-gray-300 mb-2">Your watchlist is empty</h2>
-        <p className="text-gray-500">Start adding stocks to track them here</p>
-      </div>
-    </div>
-  )
-=======
+
 import { auth } from "@/lib/better-auth/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -44,5 +34,4 @@ export default async function WatchlistPage() {
       </section>
     </div>
   );
->>>>>>> d09b210 (setup watchlist page)
 }

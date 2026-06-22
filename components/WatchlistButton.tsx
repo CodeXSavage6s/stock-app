@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import { addToWatchlist } from "@/lib/actions/watchlist.actions.ts";
 
 interface WatchlistButtonProps {
+  userId: string;
   symbol: string;
   company: string;
   isInWatchlist: boolean;
@@ -13,6 +14,7 @@ interface WatchlistButtonProps {
 }
 
 const WatchlistButton = ({
+  userId,
   symbol,
   company,
   isInWatchlist,
@@ -29,19 +31,6 @@ const WatchlistButton = ({
   }, [added, type]);
 
   const handleClick = async () => {
-    try {
-      setIsPending(true);
-      const result = await addToWatchlist(symbol, company);
-
-<<<<<<< HEAD
-      if (result.ok && result.inWatchlist !== null) {
-        setAdded(result.inWatchlist);
-        onWatchlistChange?.(symbol, result.inWatchlist);
-      }
-    } catch (error) {
-      console.error('Failed to update watchlist:', error);
-    } finally {
-=======
     setIsPending(true);
     try {
       const next = await addToWatchlist(symbol, userId, company);
@@ -51,7 +40,6 @@ const WatchlistButton = ({
       console.error("Error adding to watchlist", err)
     }
       finally {
->>>>>>> d09b210 (setup watchlist page)
       setIsPending(false);
     }
   };
