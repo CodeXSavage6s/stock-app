@@ -106,7 +106,7 @@ export async function getCompanyProfile(symbol: string): Promise<string | undefi
     }
     const url = `${FINNHUB_BASE_URL}/stock/profile2?symbol=${encodeURIComponent(symbol)}&token=${token}`;
     const profile = await fetchJSON(url, 3600); // Cache for an hour
-    return profile.name;
+    return profile?.name;
   } catch (err) {
     console.error('getCompanyProfile error:', err);
     return undefined;
@@ -165,7 +165,7 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
     } else {
       const url = `${FINNHUB_BASE_URL}/search?q=${encodeURIComponent(trimmed)}&token=${token}`;
       const data = await fetchJSON<FinnhubSearchResponse>(url, 1800);
-      results = Array.isArray(data?.result) ? data.result : [];
+      results = Array.isArray(data?.result) ? data?.result : [];
     }
 
     const mapped: StockWithWatchlistStatus[] = results
