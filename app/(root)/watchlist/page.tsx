@@ -11,7 +11,7 @@ export default async function WatchlistPage() {
   const session = await auth?.api?.getSession({ headers: await headers() });
   if (!session?.user) redirect("/sign-in");
 
-  const userId = session.user.id;
+  const userId = session.user.id!;
 
   const items = await getWatchlistSymbolsByUserId(userId);
 
