@@ -6,7 +6,7 @@ import {headers} from "next/headers";
 
 export const signUpWithEmail = async ({ email, password, fullName, country, investmentGoals, riskTolerance, preferredIndustry }: SignUpFormData) => {
     try {
-        const response = await auth.api.signUpEmail({ body: { email, password, name: fullName } })
+        const response = await auth?.api?.signUpEmail({ body: { email, password, name: fullName } })
 
         if(response) {
             await inngest.send({
