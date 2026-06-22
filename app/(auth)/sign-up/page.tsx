@@ -22,7 +22,7 @@ export default function SignUp() {
       country: 'US',
       investmentGoals: 'Growth',
       riskTolerance: 'Medium',
-      prefferedIndustry: 'Technology'
+      preferredIndustry: 'Technology'
     },
     mode: 'onBlur'
   });
