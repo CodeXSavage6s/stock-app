@@ -153,15 +153,16 @@ declare global {
     };
 
     type MarketNewsArticle = {
-        id: number;
-        headline: string;
-        summary: string;
-        source: string;
-        url: string;
-        datetime: number;
-        category: string;
-        related: string;
+        id?: number;
+        headline?: string;
+        summary?: string;
+        source?: string;
+        url?: string;
+        datetime?: number;
+        category?: string;
+        related?: string;
         image?: string;
+        symbol?: string
     };
 
     type WatchlistNewsProps = {
