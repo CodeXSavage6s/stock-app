@@ -105,7 +105,7 @@ export async function getCompanyProfile(symbol: string): Promise<string | undefi
       throw new Error('FINNHUB API key is not configured');
     }
     const url = `${FINNHUB_BASE_URL}/stock/profile2?symbol=${encodeURIComponent(symbol)}&token=${token}`;
-    const profile = await fetchJSON<CompanyProfile>(url, 3600); // Cache for an hour
+    const profile = await fetchJSON(url, 3600); // Cache for an hour
     return profile.name;
   } catch (err) {
     console.error('getCompanyProfile error:', err);
