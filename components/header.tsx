@@ -15,7 +15,7 @@ export default async function Header({user}: {user: User}) {
           <Image src="/icons/logo.svg" alt="logo" width={142} height={32} className="h-8 w-auto cursor-pointer"/>
         </Link>
         <nav className="hidden sm:block">
-          <NavItems initialStocks={initialStocks} />
+          <NavItems />
         </nav>
         <UserDropdown user={user} />
       </div>
