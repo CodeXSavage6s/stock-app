@@ -18,7 +18,7 @@ export default async function StockDetails({ params }: StockDetailsPageProps) {
   const symbol = rawSymbol.toUpperCase();
   const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
 
-  const session = await auth.api.getSession({ headers: await headers() });
+  const session = await auth?.api?.getSession({ headers: await headers() });
   const userId = session?.user?.id
 
   const isInWatchlist = await checkIsInWatchlist(symbol, userId)

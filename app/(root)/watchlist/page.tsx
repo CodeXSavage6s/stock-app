@@ -8,7 +8,7 @@ import WatchlistTable from "@/components/watchlist/WatchlistTable";
 import WatchlistNews from "@/components/watchlist/WatchlistNews";
 
 export default async function WatchlistPage() {
-  const session = await auth.api.getSession({ headers: await headers() });
+  const session = await auth?.api?.getSession({ headers: await headers() });
   if (!session?.user) redirect("/sign-in");
 
   const userId = session.user.id;
