@@ -62,8 +62,14 @@ export const sendDailyNewsSummary = inngest.createFunction(
             const perUser: Array<{ user: User; articles: MarketNewsArticle[] }> = [];
             for (const user of users as User[]) {
                 try {
-                    const symbols = await getWatchlistSymbolsByUserId(user.id);
-                    let articles = await getNews(symbols);
+                    // Fetch the symbols objects from the database
+                    const symbolsData = await getWatchlistSymbolsByUserId(user.id);
+                    
+                    // Map the array of objects into a simple array of ticker strings
+                    const symbolStrings = symbolsData.map((s) => s.symbol);
+                    
+                    let articles = await getNews(symbolStrings);
+                    
                     // Enforce max 6 articles per user
                     articles = (articles || []).slice(0, 6);
                     // If still empty, fallback to general
