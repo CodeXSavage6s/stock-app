@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter} from "better-auth/adapters/mongodb";
-import connectDB from "@/database/mongodb";
+import { connectDB} from "@/database/mongodb";
 import { nextCookies} from "better-auth/next-js";
 
 let authInstance: ReturnType<typeof betterAuth> | null = null;
@@ -31,7 +31,4 @@ export const getAuth = async () => {
     return authInstance;
 }
 
-// Export a function or helper instead of a top-level awaited constant
-export const auth = async () => {
-    return await getAuth();
-};
+export const auth = await getAuth();
