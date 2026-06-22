@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { addToWatchlist } from "@/lib/actions/watchlist.actions.ts";
+import { addToWatchlist } from "@/lib/actions/watchlist.actions";
 
 interface WatchlistButtonProps {
   userId: string;
