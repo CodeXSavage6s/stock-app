@@ -12,16 +12,16 @@ export async function getWatchlistSymbolsByUserId(userId: string): Promise<{ sym
     await connectDB();
     const items = await Watchlist.find({ userId }).lean();
     return items.map((i) => ({
-      userId: String(i.userId),
       symbol: String(i.symbol),
-      company: String(i.company)
-      //addedAt: i.addedAt,
+      company: String(i.company),
+      addedAt: i.addedAt ? new Date(i.addedAt) : new Date(), // Ensures a valid Date object is returned
     }));
   } catch (err) {
     console.error('getWatchlistSymbolsByUserId error:', err);
     return [];
   }
 }
+
 
 export async function checkIsInWatchlist(symbol: string, userId: string): Promise<boolean> {
   if (!userId || !symbol) return false;
