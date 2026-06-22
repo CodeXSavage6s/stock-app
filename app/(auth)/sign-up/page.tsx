@@ -101,7 +101,7 @@ export default function SignUp() {
                 />
                 
           <SelectField
-                    name="prefferedIndustry"
+                    name="preferredIndustry"
                     label="Preferred Industry"
                     placeholder="Select your preferred industry"
                     options={PREFERRED_INDUSTRIES}
