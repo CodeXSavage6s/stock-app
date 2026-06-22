@@ -9,11 +9,6 @@ export default async function Layout({
   children: React.ReactNode;
 }>) {
     const session = await auth.api.getSession({ headers: await headers() });
-<<<<<<< HEAD
-=======
-    
-    //console.log("SESSION", JSON.stringify(session, null, 2))
->>>>>>> d09b210 (setup watchlist page)
 
     if(!session?.user) redirect('/sign-in');
 
